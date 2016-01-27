@@ -834,11 +834,12 @@ static void port_registration_callback(jack_port_id_t port_id, int reg, void *ar
     notify_devices_change(si);
 }
 
-static void port_rename_calllback(jack_port_id_t port_id,
+static int port_rename_calllback(jack_port_id_t port_id,
         const char *old_name, const char *new_name, void *arg)
 {
     struct SoundIoPrivate *si = (struct SoundIoPrivate *)arg;
     notify_devices_change(si);
+    return 0;
 }
 
 static void shutdown_callback(void *arg) {
